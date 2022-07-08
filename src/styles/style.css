@@ -1,0 +1,350 @@
+@import "./reset.css";
+@import "./form.css";
+@import "./modal.css";
+
+body {
+  background-color: #f3f3f3;
+}
+/*------------------------------------------------ HEADER ------------------------------------------*/
+header {
+  width: 100vw;
+  height: 20vh;
+  margin-bottom: 2vh;
+  padding: 5%;
+  display: flex;
+  color: #fff;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #6495ed;
+  position: fixed;
+  z-index: 2;
+}
+.header__img {
+  width: 60px;
+  height: 60px;
+  max-width: 30%;
+  border-radius: 50%;
+  border: 4px #f3f3f3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+header .btn {
+  font-size: 1.2rem;
+}
+/*------------------------------------------------ MAIN --------------------------------------------*/
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+.blog__main {
+  top: 20%;
+}
+.main__new-post,
+.post {
+  margin: 5% 0;
+  width: 95vw;
+  height: 30%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background-color: #f3f3f3;
+}
+.main__new-post--input {
+  width: 95%;
+  height: 90%;
+  padding: 5%;
+  overflow: scroll;
+  border: none;
+  border-radius: 3px;
+  background-color: #6495ed10;
+  box-shadow: -1px -1px 3px -1px #48484850 inset;
+}
+.main__new-post .btn {
+  width: 10%;
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+}
+.main__pagination {
+  width: 100vw;
+  margin: 5% 0;
+  padding: 5%;
+  display: flex;
+  overflow: scroll;
+  box-shadow: -1px -1px 3px -1px #48484850 inset;
+}
+.main__pagination small {
+  width: 30px;
+  margin: 0 2%;
+  padding: 3%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  background-color: #edbc64;
+  border-radius: 3px;
+}
+.main__pagination small:hover {
+  border-radius: 10px;
+  text-decoration: underline;
+}
+.main__all-posts {
+  width: 100%;
+  height: 70%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+/*----------------------------------------------- POST --------------------------------------------*/
+.post {
+  width: 95%;
+  height: fit-content;
+  margin: 2%;
+  padding: 3%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 1px solid transparent;
+  background-color: #6495ed10;
+  box-shadow: -1px -1px 3px -1px #48484850;
+}
+.post__img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.post__username {
+  width: 75%;
+}
+.post__content {
+  width: 75%;
+  margin-left: 25%;
+  font-size: 0.8rem;
+  text-align: justify;
+}
+.post__edit {
+  width: 75%;
+  margin-left: 25%;
+  padding: 3%;
+  font-size: 0.8rem;
+}
+.btn__edit {
+  top: 50%;
+  right: 4%;
+  height: 20%;
+  position: absolute;
+}
+.post__date {
+  width: 100%;
+  margin-top: 2%;
+  color: #888888;
+  font-weight: 300;
+  text-align: right;
+}
+.post__btns {
+  top: 10%;
+  right: 5%;
+  width: 20%;
+  height: 20%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+}
+.post__btns button {
+  width: 45%;
+}
+.post__btns button:hover {
+  border-radius: 10px;
+}
+.post__btns button:nth-child(1) {
+  background-color: #6495ed;
+}
+.post__btns button:nth-child(2) {
+  background-color: #ed6464;
+}
+/*---------------------------------------------- GENERAL---------------------------------------------*/
+.btn,
+.post__btns button {
+  padding: 2%;
+  color: #fff;
+  font-weight: 300;
+  font-size: 1rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #edbc64;
+  transition: 200ms;
+  cursor: pointer;
+}
+.btn:hover {
+  border-radius: 10px;
+  font-weight: 400;
+}
+.main__pagination .active {
+  background-color: #6495ed;
+}
+.clear {
+  display: none;
+}
+.slideFromBottom {
+  transition: 300ms;
+  animation: slide-up;
+  animation-fill-mode: forwards;
+  animation-duration: 800ms;
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 700px) {
+  /*------------------------------------------ HEADER -----------------------------*/
+  header {
+    height: 20vh;
+    padding: 2%;
+    justify-content: space-between;
+  }
+  .header__img {
+    width: 80px;
+    height: 80px;
+  }
+  header h1 {
+    width: 80%;
+  }
+  header .btn {
+    font-size: 1.4rem;
+    padding: 1%;
+  }
+  /*------------------------------------------ MAIN ----------------------------------*/
+  .main__new-post {
+    margin: 2% 0;
+    width: 86%;
+  }
+  .main__new-post--input {
+    font-size: 1.1rem;
+    box-shadow: -1px -1px 5px -1px #48484850 inset;
+  }
+  .main__new-post .btn {
+    width: 5%;
+    padding: 1%;
+    bottom: 15%;
+  }
+  .main__pagination {
+    width: 85%;
+    margin: 0;
+    padding: 2%;
+    box-shadow: -1px -1px 5px -1px #48484850 inset;
+  }
+  .main__pagination small {
+    width: 5%;
+    margin: 1%;
+  }
+  /*----------------------------------------- POST -------------------------------------*/
+  .post {
+    width: 85%;
+  }
+  .post__img {
+    width: 70px;
+    height: 70px;
+  }
+  .post__username {
+    width: 85%;
+  }
+  .post__content {
+    margin-left: 15%;
+  }
+  .btn__edit {
+    top: 51%;
+    right: 5%;
+  }
+  .post__date {
+    width: 90%;
+  }
+  .post__btns {
+    width: 15%;
+    height: 15%;
+    right: 3%;
+  }
+}
+@media (min-width: 1000px) {
+  /*-------------------------------------- HEADER ----------------------------*/
+  header .btn {
+    font-size: 1rem;
+  }
+  header .btn i {
+    display: none;
+  }
+  header .btn::before {
+    content: "Logout";
+  }
+  /*--------------------------------------- MAIN ----------------------------*/
+  .main__new-post {
+    width: 61%;
+    max-width: 630px;
+    margin: 1% 0;
+  }
+  .main__pagination {
+    width: 60%;
+    max-width: 630px;
+    margin: 1%;
+  }
+  /*-------------------------------------- POST -----------------------------*/
+  .post {
+    width: 60%;
+    max-width: 600px;
+    margin: 1%;
+  }
+  .post__img {
+    max-width: 70px;
+    max-height: 70px;
+  }
+  .post__content {
+    width: 85%;
+  }
+  .btn__edit {
+    right: 7%;
+    height: 18%;
+  }
+  .post__date {
+    width: 100%;
+  }
+  .post__btns {
+    top: 10%;
+    right: 3%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 300ms;
+  }
+  .post:hover .post__btns {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
