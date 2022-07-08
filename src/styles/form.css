@@ -1,0 +1,91 @@
+form {
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  color: #fff;
+  display: flex;
+  gap: 2%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #6495ed;
+  opacity: 0;
+}
+
+.close-btn {
+  top: 5%;
+  right: 5%;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  background-color: transparent;
+}
+
+.close-btn:hover {
+  color: #ed6464;
+}
+
+.tooltip {
+  top: 15%;
+  right: 70%;
+  color: #fff;
+  font-style: italic;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #fff;
+  opacity: 0;
+  position: absolute;
+  transition: 500ms;
+}
+
+.close-btn:hover .tooltip {
+  right: 150%;
+  opacity: 1;
+}
+
+form h1 {
+  font-weight: 400;
+}
+
+form input {
+  width: 70%;
+  margin: 2% 0;
+  padding: 3%;
+  border: none;
+  border-radius: 3px;
+}
+input:invalid:not(:placeholder-shown):not(:focus) {
+  color: #ed6464;
+}
+form .btn {
+  width: 70%;
+}
+form p,
+form a {
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+}
+form p {
+  font-weight: 300;
+}
+form a {
+  font-style: italic;
+}
+@media (min-width: 700px) {
+  form {
+    width: 60%;
+    height: 80%;
+    border-radius: 3px;
+  }
+}
+@media (min-width: 1000px) {
+  form {
+    width: 40%;
+    height: 70%;
+    max-width: 370px;
+    max-height: 370px;
+  }
+}
