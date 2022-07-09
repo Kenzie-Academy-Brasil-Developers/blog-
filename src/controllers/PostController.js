@@ -7,25 +7,30 @@ class PostController{
     parent.innerHTML = "";
     const aPage      = await API.postsAtPage(page)
     const posts      = aPage.data
+    
+    console.log(aPage)
+    console.log(posts)
 
     localStorage.setItem("page", aPage.page)
     localStorage.setItem("lastPage", aPage.lastPage)
-
+    
     if(aPage.page !== aPage.lastPage){
       localStorage.setItem("nextPage", aPage.page + 1)
     }
-    if(aPage.page !== 1){
+    else if(aPage.page !== 1){
       localStorage.setItem("previousPage", aPage.page - 1)
     }
 
     posts.forEach((p) => {
-      const { id, post, createdAt, owner } = p
-      const bool = localStorage.getItem("userId") === owner.id
-      const date = createdAt.split("-").reverse().join("/")
-
-      const aPost = new Post(id, owner.avatarUrl, owner.username, post, date)
-
+      const { id, post, createdAt, } = p
+      const bool =  localStorage.getItem("userId") === id.id
+      const date =  createdAt.split("-").reverse().join("/")
+      console.log(bool)
+      const aPost = new Post(id, id.avatarUrl, id.username, post, date)
+      console.log(aPost)
       parent.appendChild(aPost.render(bool))
+      /**if(bool == true){
+      }**/
     })
 
     LayoutController.currentPage()
