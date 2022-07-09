@@ -13,8 +13,8 @@ class API {
       },
       body: JSON.stringify(obj),
     })
-      .then((res) => res.json())
-      .then((res) => res)
+      .then((res)  => res.json())
+      .then((res)  => res)
       .catch((err) => {  
         console.log(err)
         return err
@@ -24,15 +24,15 @@ class API {
 
   static async userLogin(obj){
     const userURL = API.baseURL + API.forUser
-    const req = await fetch(userURL + "login", {
+    const req     = await fetch(userURL + "login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(obj),
     })
-      .then((res) => res.json())
-      .then((res) => res)
+      .then((res)  => res.json())
+      .then((res)  => res)
       .catch((err) => err)
 
     if(req.token){
@@ -43,14 +43,14 @@ class API {
 
   static async anUser(id){
     const userURL = API.baseURL + API.forUser
-    const req = await fetch(userURL + `${id}`, {
+    const req     = await fetch(userURL + `${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
-      .then((res) => res.json())
-      .then((res) => res)
+      .then((res)  => res.json())
+      .then((res)  => res)
       .catch((err) => {
         console.log(err)
         return err
@@ -67,23 +67,23 @@ class API {
       },
       body: JSON.stringify(obj),
     })
-      .then((res) => res.json())
-      .then((res) => res)
-      .catch((error) => error)
+      .then((res)  => res.json())
+      .then((res)  => res)
+      .catch((err) => err)
 
     return req
   }
 
   static async aPost(id){
     const postURL = API.baseURL + API.forPost
-    const req = await fetch(postURL + `${id}`, {
+    const req     = await fetch(postURL + `${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
-      .then((res) => res.json())
-      .then((res) => res)
+      .then((res)  => res.json())
+      .then((res)  => res)
       .catch((err) => {
         console.log(err)
         return err
@@ -98,8 +98,8 @@ class API {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
-      .then((res) => res.json())
-      .then((res) => res)
+      .then((res)  => res.json())
+      .then((res)  => res)
       .catch((err) => {
         console.log(err)
         return err
@@ -107,9 +107,11 @@ class API {
     return req
   }
 
-  static editPost(obj, id){
+  static async editPost(obj, id){
+    console.log(obj)
+    console.log(id)
     const postURL = API.baseURL + API.forPost
-    const req = fetch(postURL + `${id}`, {
+    const req     = await fetch(postURL + `${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -117,24 +119,24 @@ class API {
       },
       body: JSON.stringify(obj), 
     })
-      .then((res) => res.json())
-      .then((res) => res)
-      .catch((error) => error)
+      .then((res)  => res.json())
+      .then((res)  => res)
+      .catch((err) => err)
 
     return req
   }
 
   static deletPost(id) {
     const postURL = API.baseURL + API.forPost
-    const req = fetch(postURL + `${id}`, {
+    const req     = fetch(postURL + `${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
-      .then((res) => res.json())
-      .then((res) => res)
-      .catch((error) => error)
+      .then((res)  => res.json())
+      .then((res)  => res)
+      .catch((err) => err)
 
     return req
   }
