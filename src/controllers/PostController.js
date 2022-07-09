@@ -4,13 +4,10 @@ import Post from "../models/Post.js"
 
 class PostController{
   static async postsPage(parent, page){
-    parent.innerHTML = "";
+    parent.innerHTML = ""
     const aPage      = await API.postsAtPage(page)
     const posts      = aPage.data
-    
-    console.log(aPage)
-    console.log(posts)
-
+ 
     localStorage.setItem("page", aPage.page)
     localStorage.setItem("lastPage", aPage.lastPage)
     
@@ -21,16 +18,21 @@ class PostController{
       localStorage.setItem("previousPage", aPage.page - 1)
     }
 
-    posts.forEach((p) => {
-      const { id, post, createdAt, } = p
-      const bool =  localStorage.getItem("userId") === id.id
-      const date =  createdAt.split("-").reverse().join("/")
-      console.log(bool)
-      const aPost = new Post(id, id.avatarUrl, id.username, post, date)
-      console.log(aPost)
-      parent.appendChild(aPost.render(bool))
-      /**if(bool == true){
-      }**/
+    posts.forEach((p) => {   
+      const id         = p.id
+      const content    = p.content
+      const createdAt  = p.createdAt
+      const userAvatar = p.user.avatarUrl
+      const userName   = p.user.username
+      const userId     = p.user.id
+   
+      const bool  =  localStorage.getItem("userId") == userId     
+      const date  =  createdAt.split("-").reverse().join("/")      
+      const aPost = new Post(id, userAvatar, userName, content, date)
+ 
+      parent.appendChild(aPost.render(bool))      
+      /*if(bool == true){
+      }*/
     })
 
     LayoutController.currentPage()
@@ -63,6 +65,7 @@ class PostController{
     input.value = ""
 
     const request = await API.newPost(body)
+    console.log(request)
     PostController.postsPage(postList, page)
   }
 
@@ -89,6 +92,9 @@ class PostController{
     const page     = localStorage.getItem("page")
 
     const request = await API.editPost(body, id)
+    console.log(body)
+    console.log(id)
+    console.log(request)
     PostController.postsPage(postList, page)
   }
 
@@ -98,6 +104,7 @@ class PostController{
     const page     = localStorage.getItem("page")
 
     const request = await API.deletPost(postID)
+    console.log(request)
     PostController.postsPage(postList, +page)
   }
 }
