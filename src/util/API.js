@@ -58,8 +58,8 @@ class API {
     return req
   }
 
-  static newPost(obj){
-    const req = fetch(API.baseURL + "post", {
+  static async newPost(obj){
+    const req = await fetch(API.baseURL + "posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +92,7 @@ class API {
   }
 
   static async postsAtPage(page){
-    const req = await fetch(API.baseURL + `post?page=${page}`, {
+    const req = await fetch(API.baseURL + `posts?page=${page}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
