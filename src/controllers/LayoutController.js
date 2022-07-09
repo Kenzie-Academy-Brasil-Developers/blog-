@@ -9,8 +9,8 @@ class LayoutController {
 
     const form = FormController.loginForm()
 
-    main.appendChild(form)
-    body.appendChild(main)
+    main.append(form)
+    body.append(main)
   }
 
   static registerPage(){
@@ -19,8 +19,8 @@ class LayoutController {
 
     const form = FormController.registerForm()
 
-    main.appendChild(form)
-    body.appendChild(main)
+    main.append(form)
+    body.append(main)
   }
 
   static mainPage(){
@@ -48,7 +48,7 @@ class LayoutController {
 
     const newPost = LayoutController.createNewPost()
 
-    const allPosts = document.createElement("section")
+    const allPosts = document.createElement("section")    
     PostController.postsPage(allPosts, 1)
 
     allPosts.classList.add("main__all-posts")
@@ -110,12 +110,13 @@ class LayoutController {
     postInput.classList.add("main__new-post--input")
     postInput.placeholder = "Crie um post !"
     postInput.id          = "content"
-
+    console.log(newPost)
     postBtn.innerHTML = '<i class="fa-solid fa-square-plus"></i>';
     postBtn.classList.add("btn")
     postBtn.addEventListener("click", PostController.newPost)
 
     newPost.append(postInput, postBtn)
+    
     return newPost
   }
 
