@@ -5,6 +5,7 @@ class API {
   static token   = ""
 
   static async newUser(obj){
+    console.log(obj)
     const userURL = API.baseURL + API.forUser
     const req     = await fetch(userURL + "register", {
       method: "POST",
